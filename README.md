@@ -7,7 +7,7 @@
 **Addon de Slimefun4 para DrakesCraft — exploración espacial en 1.21.11**
 
 <p>
-  <a href="https://github.com/DrakesCraft-Labs/Galaxyfun-drake"><img src="https://img.shields.io/badge/GitHub-Galaxyfun--Drake-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
+  <a href="https://github.com/SlimefunNewHorizons/Galaxyfun-drake"><img src="https://img.shields.io/badge/GitHub-Galaxyfun--Drake-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
   <img src="https://img.shields.io/badge/Java-21-F89820?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 21"/>
   <img src="https://img.shields.io/badge/Paper-1.21.11-38BDF8?style=for-the-badge&logo=minecraft&logoColor=white" alt="Paper 1.21.11"/>
 </p>
@@ -52,7 +52,7 @@ mvn clean package
 
 ## 📄 License & Upstream Attribution
 
-This project is a sovereign fork maintained by [**JackStar6677-1**](https://github.com/JackStar6677-1) under [**DrakesCraft Labs**](https://github.com/DrakesCraft-Labs).
+This project is a sovereign fork maintained by [**JackStar6677-1**](https://github.com/JackStar6677-1) under [**DrakesCraft Labs**](https://github.com/SlimefunNewHorizons).
 
 - **Original Project:** Created by the upstream authors and the open-source community.
 - **DrakesCraft Optimizations:** Modernized for Paper/Purpur 1.21.11+, Java 21, high concurrency, asynchronous safety, and exploit/duplication prevention.
