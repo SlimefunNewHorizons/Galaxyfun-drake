@@ -22,6 +22,13 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.34")
 
     implementation("com.github.drakescraft_labs:infinitylib-drake:1.3.11-DRAKE-SNAPSHOT")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.4")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_21
