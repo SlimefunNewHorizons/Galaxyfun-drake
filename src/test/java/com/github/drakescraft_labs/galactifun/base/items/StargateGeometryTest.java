@@ -66,6 +66,6 @@ class StargateGeometryTest {
     @Test
     void describirDaTextoEntendible() {
         assertTrue(StargateGeometry.describir(new Pos(0, 1)).contains("base"));
-        assertTrue(StargateGeometry.describir(new Pos(6, 0)).contains("superior"));
+        assertTrue(StargateGeometry.describir(new Pos(6, 0)).contains("top"));
     }
 }

@@ -172,19 +172,19 @@ public final class BaseItems {
             Material.QUARTZ_BLOCK,
             "&9Stargate Ring",
             "",
-            "&7Se necesitan 15 para armar un Stargate:",
-            "&7un arco vertical de 7 de alto y 7 de ancho,",
-            "&7con el controlador en el centro de la base."
+            "&7You need 15 to build a Stargate:",
+            "&7a vertical arch 7 tall and 7 wide,",
+            "&7with the controller at the center of the base."
     );
     public static final SlimefunItemStack STARGATE_CONTROLLER = new SlimefunItemStack(
             "STARGATE_CONTROLLER",
             Material.CHISELED_QUARTZ_BLOCK,
             "&9Stargate Controller",
             "",
-            "&7Va en el centro de la BASE del arco de anillos.",
-            "&7Click derecho: enciende el portal; con el portal",
-            "&7encendido abre el menu (destino, nombre, apagar).",
-            "&7El destino necesita 1x2 bloques libres a un lado."
+            "&7Goes at the center of the BASE of the ring arch.",
+            "&7Right-click: activates the portal; once active",
+            "&7it opens the menu (destination, name, deactivate).",
+            "&7The destination needs a free 1x2 spot on either side."
     );
     public static final SlimefunItemStack OBSERVATORY = new SlimefunItemStack(
             "OBSERVATORY",

@@ -30,9 +30,9 @@ public final class StargateGeometry {
     /** Plano vertical en el que esta construido el anillo. La normal es el eje por el que se entra al portal. */
     public enum Orientation {
         /** Anillo extendido a lo largo del eje Z; se atraviesa por X (la orientacion original). */
-        EJE_Z(0, 0, 1, 1, 0, 0, "eje Z (norte-sur)"),
+        EJE_Z(0, 0, 1, 1, 0, 0, "Z-axis (north-south)"),
         /** Anillo extendido a lo largo del eje X; se atraviesa por Z. */
-        EJE_X(1, 0, 0, 0, 0, 1, "eje X (este-oeste)");
+        EJE_X(1, 0, 0, 0, 0, 1, "X-axis (east-west)");
 
         private final int hx;
         private final int hy;
@@ -120,13 +120,13 @@ public final class StargateGeometry {
     public static String describir(Pos pos) {
         String altura;
         if (pos.y() == 0) {
-            altura = "la base (junto al controlador)";
+            altura = "the base (next to the controller)";
         } else if (pos.y() == 6) {
-            altura = "la parte superior";
+            altura = "the top";
         } else {
-            altura = "la altura " + pos.y();
+            altura = "height " + pos.y();
         }
-        String lado = pos.h() == 0 ? "centro" : (pos.h() > 0 ? "lado +" + pos.h() : "lado " + pos.h());
+        String lado = pos.h() == 0 ? "center" : (pos.h() > 0 ? "side +" + pos.h() : "side " + pos.h());
         return altura + ", " + lado;
     }
 }

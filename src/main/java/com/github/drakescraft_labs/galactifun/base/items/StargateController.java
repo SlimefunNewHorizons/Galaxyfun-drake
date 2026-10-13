@@ -109,7 +109,7 @@ public final class StargateController extends SlimefunItem implements Listener {
             public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
                 if (Boolean.parseBoolean(BlockStorage.getLocationInfo(e.getBlock().getLocation(), "locked"))) {
                     e.setCancelled(true);
-                    e.getPlayer().sendMessage(ChatColor.RED + "Desactiva el Stargate antes de romperlo.");
+                    e.getPlayer().sendMessage(ChatColor.RED + "Deactivate the Stargate before destroying it.");
                 }
             }
         });
@@ -193,23 +193,23 @@ public final class StargateController extends SlimefunItem implements Listener {
         }
 
         int total = StargateGeometry.ANILLO.size();
-        p.sendMessage(ChatColor.RED + "El Stargate no esta armado: en el plano " + best.nombre() + " faltan "
-                + bestMissing.size() + " de " + total + " Stargate Ring.");
-        p.sendMessage(ChatColor.GRAY + "El controlador va en la BASE del arco, en el centro (entre dos anillos). El arco "
-                + "mide 7 de alto y 7 de ancho y debe quedar vertical. Se acepta orientado a lo largo del eje X o del Z.");
+        p.sendMessage(ChatColor.RED + "The Stargate is not assembled: on the " + best.nombre() + " plane " + bestMissing.size() + " of "
+                + total + " Stargate Rings are missing.");
+        p.sendMessage(ChatColor.GRAY + "The controller goes at the BASE of the arch, in the center (between two rings). The arch "
+                + "is 7 tall and 7 wide and must stand vertical. Either the X axis or the Z axis is accepted.");
 
         int shown = 0;
         for (Pos pos : bestMissing) {
             Block spot = at(controller, best, pos);
             if (shown++ < 3) {
-                String ocupado = spot.getType().isAir() ? "esta vacio" : "hay " + describeBlock(spot);
-                p.sendMessage(ChatColor.YELLOW + " - Falta un Stargate Ring en " + spot.getX() + " " + spot.getY() + " "
+                String ocupado = spot.getType().isAir() ? "it is empty" : "there is " + describeBlock(spot);
+                p.sendMessage(ChatColor.YELLOW + " - Missing Stargate Ring at " + spot.getX() + " " + spot.getY() + " "
                         + spot.getZ() + " (" + StargateGeometry.describir(pos) + "): " + ocupado);
             }
             p.spawnParticle(Particle.END_ROD, spot.getLocation().add(0.5, 0.5, 0.5), 6, 0.15, 0.15, 0.15, 0.0);
         }
         if (bestMissing.size() > 3) {
-            p.sendMessage(ChatColor.GRAY + "   ... y " + (bestMissing.size() - 3) + " mas (marcados con particulas).");
+            p.sendMessage(ChatColor.GRAY + "   ... and " + (bestMissing.size() - 3) + " more (marked with particles).");
         }
     }
 
@@ -242,8 +242,8 @@ public final class StargateController extends SlimefunItem implements Listener {
         for (Pos pos : StargateGeometry.PORTAL) {
             Block inner = at(b, o, pos);
             if (BlockStorage.check(inner) != null) {
-                p.sendMessage(ChatColor.RED + "No se puede encender: hay " + describeBlock(inner) + " dentro del arco ("
-                        + inner.getX() + " " + inner.getY() + " " + inner.getZ() + "). Retiralo para dejar el interior libre.");
+                p.sendMessage(ChatColor.RED + "Cannot activate: " + describeBlock(inner) + " is inside the arch ("
+                        + inner.getX() + " " + inner.getY() + " " + inner.getZ() + "). Remove it to clear the inside.");
                 return;
             }
         }
@@ -264,8 +264,8 @@ public final class StargateController extends SlimefunItem implements Listener {
         }
 
         lockBlocks(b, true);
-        p.sendMessage(ChatColor.YELLOW + "Stargate encendido."
-                + (destAddress == null ? ChatColor.GRAY + " Aun no tiene destino: haz click derecho en el controlador y elige uno." : ""));
+        p.sendMessage(ChatColor.YELLOW + "Stargate activated."
+                + (destAddress == null ? ChatColor.GRAY + " It has no destination yet: right-click the controller and pick one." : ""));
     }
 
     private static void deactivate(Block b) {
@@ -334,24 +334,24 @@ public final class StargateController extends SlimefunItem implements Listener {
     private static void setDestination(String destination, Block b, Player p) {
         Gate dest = findGate(destination);
         if (dest == null) {
-            p.sendMessage(ChatColor.RED + "No existe ningun Stargate con la direccion o el nombre \"" + destination
-                    + "\". Usa el boton de destino para elegir uno de la lista.");
+            p.sendMessage(ChatColor.RED + "No Stargate has the address or name \"" + destination
+                    + "\". Use the destination button to pick one from the list.");
             return;
         }
         if (dest.location().equals(b.getLocation())) {
-            p.sendMessage(ChatColor.RED + "Un Stargate no puede tener como destino a si mismo.");
+            p.sendMessage(ChatColor.RED + "A Stargate cannot target itself.");
             return;
         }
 
         BSUtils.setStoredLocation(b.getLocation(), "dest", dest.location());
         BlockStorage.addBlockInfo(b, "destination", dest.address());
 
-        p.sendMessage(ChatColor.YELLOW + String.format("Destino fijado: %s en %d %d %d (%s).", dest.label(),
+        p.sendMessage(ChatColor.YELLOW + String.format("Destination set: %s at %d %d %d (%s).", dest.label(),
                 dest.location().getBlockX(), dest.location().getBlockY(), dest.location().getBlockZ(),
                 dest.location().getWorld().getName()));
         if (!dest.lit()) {
-            p.sendMessage(ChatColor.GRAY + "Ojo: ese Stargate esta apagado; hay que encenderlo (click derecho en su controlador) "
-                    + "para poder llegar.");
+            p.sendMessage(ChatColor.GRAY + "Note: that Stargate is off; it must be activated (right-click its controller) "
+                    + "before you can arrive.");
         }
     }
 
@@ -360,13 +360,13 @@ public final class StargateController extends SlimefunItem implements Listener {
         String destAddress = BlockStorage.getLocationInfo(self.getLocation(), "destination");
         Gate dest = destAddress == null ? null : findGate(destAddress);
         if (dest == null) {
-            p.sendMessage(ChatColor.RED + "Primero elige un destino valido.");
+            p.sendMessage(ChatColor.RED + "Pick a valid destination first.");
             return;
         }
         String myAddress = ensureAddress(self);
         BSUtils.setStoredLocation(dest.location(), "dest", self.getLocation());
         BlockStorage.addBlockInfo(dest.location(), "destination", myAddress);
-        p.sendMessage(ChatColor.YELLOW + dest.label() + " ahora apunta de vuelta a este Stargate.");
+        p.sendMessage(ChatColor.YELLOW + dest.label() + " now points back to this Stargate.");
     }
 
     // ------------------------------------------------------------------ menus
@@ -388,34 +388,34 @@ public final class StargateController extends SlimefunItem implements Listener {
 
         // Estado: todo lo que un jugador necesita saber para entender por que funciona o no
         List<String> status = new ArrayList<>();
-        status.add(orientation.isPresent() ? "&aEstructura: armada (" + orientation.get().nombre() + ")"
-                : "&cEstructura: incompleta");
-        status.add(lit ? "&aPortal: encendido" : "&cPortal: apagado");
+        status.add(orientation.isPresent() ? "&aStructure: assembled (" + orientation.get().nombre() + ")"
+                : "&cStructure: incomplete");
+        status.add(lit ? "&aPortal: active" : "&cPortal: inactive");
         if (destination == null) {
-            status.add("&cDestino: ninguno (usa el boton de destino)");
+            status.add("&cDestination: none (use the destination button)");
         } else if (dest == null) {
-            status.add("&cDestino: " + destination + " (ya no existe)");
+            status.add("&cDestination: " + destination + " (no longer exists)");
         } else {
-            status.add("&aDestino: " + dest.label());
-            status.add(dest.lit() ? "&aEl destino esta encendido" : "&eEl destino esta APAGADO: enciendelo para poder llegar");
+            status.add("&aDestination: " + dest.label());
+            status.add(dest.lit() ? "&aThe destination is active" : "&eThe destination is OFF: activate it to arrive");
             String back = BlockStorage.getLocationInfo(dest.location(), "destination");
-            status.add(address.equalsIgnoreCase(back == null ? "" : back) ? "&aEl destino apunta de vuelta aqui"
-                    : "&7El destino no apunta de vuelta (usa \"Enlazar retorno\")");
+            status.add(address.equalsIgnoreCase(back == null ? "" : back) ? "&aThe destination points back here"
+                    : "&7The destination does not point back (use \"Link Return\")");
         }
         menu.addItem(SLOT_STATUS, new CustomItemStack(lit && dest != null ? Material.LIME_STAINED_GLASS_PANE : Material.YELLOW_STAINED_GLASS_PANE,
-                "&fEstado del Stargate", status.toArray(new String[0])), ChestMenuUtils.getEmptyClickHandler());
+                "&fStargate Status", status.toArray(new String[0])), ChestMenuUtils.getEmptyClickHandler());
 
         menu.addItem(SLOT_ADDRESS, new CustomItemStack(Material.BOOK,
-                "&fDireccion: " + address, name == null ? "&7Sin nombre" : "&7Nombre: &f" + name,
-                "", "&7Click izquierdo: enviar la direccion al chat",
-                "&7Click derecho: ponerle un nombre facil de recordar"), (p, i, s, c) -> {
+                "&fAddress: " + address, name == null ? "&7Unnamed" : "&7Name: &f" + name,
+                "", "&7Left click: send the address to chat",
+                "&7Right click: give it an easy-to-remember name"), (p, i, s, c) -> {
             if (c.isRightClicked()) {
-                p.sendMessage(ChatColor.YELLOW + "Escribe el nombre del Stargate (max " + MAX_NAME + " caracteres, sin simbolos raros).");
+                p.sendMessage(ChatColor.YELLOW + "Type the Stargate name (max " + MAX_NAME + " characters, letters and numbers).");
                 ChatUtils.awaitInput(p, st -> rename(b, st, p));
             } else {
                 p.sendMessage(Component.text()
                         .color(NamedTextColor.YELLOW)
-                        .content("Direccion (click para copiar): " + address)
+                        .content("Address (click to copy): " + address)
                         .clickEvent(ClickEvent.copyToClipboard(address))
                         .build());
             }
@@ -424,11 +424,11 @@ public final class StargateController extends SlimefunItem implements Listener {
         });
 
         menu.addItem(SLOT_DESTINATION, new CustomItemStack(Material.COMPASS,
-                "&fElegir destino", "&7Actual: " + (dest != null ? dest.label() : "ninguno"),
-                "", "&7Click izquierdo: lista de Stargates conocidos",
-                "&7Click derecho: escribir direccion o nombre"), (p, i, s, c) -> {
+                "&fChoose Destination", "&7Current: " + (dest != null ? dest.label() : "none"),
+                "", "&7Left click: list of known Stargates",
+                "&7Right click: type an address or name"), (p, i, s, c) -> {
             if (c.isRightClicked()) {
-                p.sendMessage(ChatColor.YELLOW + "Escribe la direccion o el nombre del Stargate de destino.");
+                p.sendMessage(ChatColor.YELLOW + "Type the address or name of the destination Stargate.");
                 ChatUtils.awaitInput(p, st -> setDestinationAndRefresh(st, b, p));
                 p.closeInventory();
             } else {
@@ -438,7 +438,7 @@ public final class StargateController extends SlimefunItem implements Listener {
         });
 
         menu.addItem(SLOT_LINK_BACK, new CustomItemStack(Material.ENDER_EYE,
-                "&fEnlazar retorno", "&7Hace que el destino apunte de vuelta a este Stargate", "&7(asi funciona de ida y vuelta)"),
+                "&fLink Return", "&7Makes the destination point back to this Stargate", "&7(for round trips)"),
                 (p, i, s, c) -> {
                     linkBack(b, p);
                     p.closeInventory();
@@ -446,19 +446,19 @@ public final class StargateController extends SlimefunItem implements Listener {
                 });
 
         menu.addItem(SLOT_HELP, new CustomItemStack(Material.KNOWLEDGE_BOOK,
-                "&fAyuda: como funciona",
-                "&71. Arma el arco con 15 Stargate Ring: 7 de alto y 7 de ancho,",
-                "&7   con el controlador en el centro de la base.",
-                "&72. Click derecho al controlador: enciende el portal.",
-                "&73. Elige destino (otro Stargate encendido).",
-                "&74. El destino necesita 1 bloque libre de ancho y 2 de alto",
-                "&7   a CUALQUIER lado del controlador (no pongas maquinas ahi).",
-                "&75. Para volver, usa \"Enlazar retorno\"."), ChestMenuUtils.getEmptyClickHandler());
+                "&fHelp: how it works",
+                "&71. Build the arch with 15 Stargate Rings: 7 tall and 7 wide,",
+                "&7   with the controller at the center of the base.",
+                "&72. Right-click the controller to activate the portal.",
+                "&73. Choose a destination (another active Stargate).",
+                "&74. The destination needs a free spot 1 wide and 2 tall",
+                "&7   on EITHER side of its controller (keep machines away).",
+                "&75. To come back, use \"Link Return\"."), ChestMenuUtils.getEmptyClickHandler());
 
-        menu.addItem(SLOT_DEACTIVATE, new CustomItemStack(Material.BARRIER, "&cApagar el Stargate",
-                "&7Necesario antes de romper el arco"), (p, i, s, c) -> {
+        menu.addItem(SLOT_DEACTIVATE, new CustomItemStack(Material.BARRIER, "&cDeactivate the Stargate",
+                "&7Required before breaking the arch"), (p, i, s, c) -> {
             deactivate(b);
-            p.sendMessage(ChatColor.YELLOW + "Stargate apagado.");
+            p.sendMessage(ChatColor.YELLOW + "Stargate deactivated.");
             p.closeInventory();
             return false;
         });
@@ -470,16 +470,16 @@ public final class StargateController extends SlimefunItem implements Listener {
         String clean = raw.replaceAll("[^\\p{L}\\p{N} _\\-]", "").trim();
         if (clean.length() > MAX_NAME) clean = clean.substring(0, MAX_NAME).trim();
         if (clean.isEmpty()) {
-            p.sendMessage(ChatColor.RED + "Nombre invalido.");
+            p.sendMessage(ChatColor.RED + "Invalid name.");
             return;
         }
         Gate other = findGate(clean);
         if (other != null && !other.location().equals(b.getLocation())) {
-            p.sendMessage(ChatColor.RED + "Ya existe un Stargate con ese nombre o direccion.");
+            p.sendMessage(ChatColor.RED + "A Stargate with that name or address already exists.");
             return;
         }
         BlockStorage.addBlockInfo(b, "gfsgName", clean);
-        p.sendMessage(ChatColor.YELLOW + "Stargate renombrado a \"" + clean + "\".");
+        p.sendMessage(ChatColor.YELLOW + "Stargate renamed to \"" + clean + "\".");
     }
 
     private static void setDestinationAndRefresh(String query, Block b, Player p) {
@@ -496,7 +496,7 @@ public final class StargateController extends SlimefunItem implements Listener {
         gates.sort(Comparator.comparingDouble((Gate g) -> g.location().getWorld().equals(here.getWorld())
                 ? g.location().distanceSquared(here) : Double.MAX_VALUE));
 
-        ChestMenu menu = new ChestMenu("Elegir destino");
+        ChestMenu menu = new ChestMenu("Choose Destination");
         int pages = Math.max(1, (gates.size() + PICKER_PAGE - 1) / PICKER_PAGE);
         int current = Math.min(Math.max(page, 0), pages - 1);
 
@@ -509,9 +509,9 @@ public final class StargateController extends SlimefunItem implements Listener {
                     g.location().getBlockY(), g.location().getBlockZ());
             menu.addItem(i, new CustomItemStack(g.lit() ? Material.LIME_CONCRETE : Material.GRAY_CONCRETE,
                     "&f" + (g.name() != null ? g.name() : "Stargate " + g.address()),
-                    "&7Direccion: " + g.address(), "&7" + where,
-                    sameWorld ? "&7Distancia: " + (int) Math.sqrt(g.location().distanceSquared(here)) + " bloques" : "&7Otro mundo",
-                    g.lit() ? "&aEncendido" : "&eApagado (enciendelo para llegar)", "", "&eClick para elegir"),
+                    "&7Address: " + g.address(), "&7" + where,
+                    sameWorld ? "&7Distance: " + (int) Math.sqrt(g.location().distanceSquared(here)) + " blocks" : "&7Other world",
+                    g.lit() ? "&aActive" : "&eInactive (activate it to arrive)", "", "&eClick to select"),
                     (pl, slot, item, action) -> {
                         setDestination(g.address(), b, pl);
                         pl.closeInventory();
@@ -519,26 +519,26 @@ public final class StargateController extends SlimefunItem implements Listener {
                     });
         }
         if (gates.isEmpty()) {
-            menu.addItem(22, new CustomItemStack(Material.BARRIER, "&cNo hay otros Stargates",
-                    "&7Construye y coloca otro controlador primero"), ChestMenuUtils.getEmptyClickHandler());
+            menu.addItem(22, new CustomItemStack(Material.BARRIER, "&cNo other Stargates",
+                    "&7Build and place another controller first"), ChestMenuUtils.getEmptyClickHandler());
         }
 
         for (int i = 45; i < 54; i++) {
             menu.addItem(i, MenuBlock.BACKGROUND_ITEM, ChestMenuUtils.getEmptyClickHandler());
         }
         if (current > 0) {
-            menu.addItem(45, new CustomItemStack(Material.ARROW, "&fPagina anterior"), (pl, slot, item, action) -> {
+            menu.addItem(45, new CustomItemStack(Material.ARROW, "&fPrevious Page"), (pl, slot, item, action) -> {
                 openPicker(b, pl, current - 1);
                 return false;
             });
         }
-        menu.addItem(49, new CustomItemStack(Material.OAK_DOOR, "&fVolver", "&7Pagina " + (current + 1) + "/" + pages),
+        menu.addItem(49, new CustomItemStack(Material.OAK_DOOR, "&fBack", "&7Page " + (current + 1) + "/" + pages),
                 (pl, slot, item, action) -> {
                     getMenu(b, pl).open(pl);
                     return false;
                 });
         if (current < pages - 1) {
-            menu.addItem(53, new CustomItemStack(Material.ARROW, "&fPagina siguiente"), (pl, slot, item, action) -> {
+            menu.addItem(53, new CustomItemStack(Material.ARROW, "&fNext Page"), (pl, slot, item, action) -> {
                 openPicker(b, pl, current + 1);
                 return false;
             });
@@ -554,7 +554,7 @@ public final class StargateController extends SlimefunItem implements Listener {
         if (b.getType() == Material.END_GATEWAY &&
                 Boolean.parseBoolean(BlockStorage.getLocationInfo(b.getLocation(), "locked"))) {
             e.setCancelled(true);
-            e.getPlayer().sendMessage(ChatColor.RED + "Apaga el Stargate antes de romperlo.");
+            e.getPlayer().sendMessage(ChatColor.RED + "Deactivate the Stargate before destroying it.");
         }
     }
 
@@ -573,17 +573,17 @@ public final class StargateController extends SlimefunItem implements Listener {
 
         Location dest = BSUtils.getStoredLocation(exit, "dest");
         if (dest == null) {
-            p.sendMessage(ChatColor.RED + "Este Stargate no tiene destino. Haz click derecho en el controlador y elige uno.");
+            p.sendMessage(ChatColor.RED + "This Stargate has no destination. Right-click the controller and pick one.");
             return;
         }
 
         Block controller = dest.getBlock();
         if (!(BlockStorage.check(controller) instanceof StargateController)) {
-            p.sendMessage(ChatColor.RED + "El Stargate de destino ya no existe (fue roto o movido). Elige otro destino.");
+            p.sendMessage(ChatColor.RED + "The destination Stargate no longer exists (broken or moved). Pick another destination.");
             return;
         }
         if (getPortalBlocks(controller).isEmpty()) {
-            p.sendMessage(ChatColor.RED + "El Stargate de destino esta apagado: pide que lo enciendan (click derecho en su controlador).");
+            p.sendMessage(ChatColor.RED + "The destination Stargate is off: ask someone to activate it (right-click its controller).");
             return;
         }
 
@@ -603,13 +603,13 @@ public final class StargateController extends SlimefunItem implements Listener {
             }
             Block culprit = !isFree(f) ? f : head;
             if (bloqueos.length() > 0) bloqueos.append("; ");
-            bloqueos.append(describeBlock(culprit)).append(" en ").append(culprit.getX()).append(' ')
+            bloqueos.append(describeBlock(culprit)).append(" at ").append(culprit.getX()).append(' ')
                     .append(culprit.getY()).append(' ').append(culprit.getZ());
         }
 
         if (feet == null) {
-            p.sendMessage(ChatColor.RED + "Destino bloqueado: " + bloqueos + ". Deja libre 1 bloque de ancho y 2 de alto "
-                    + "a cualquier lado del controlador de destino.");
+            p.sendMessage(ChatColor.RED + "Destination blocked: " + bloqueos + ". Keep a spot 1 wide and 2 tall free "
+                    + "on either side of the destination controller.");
             return;
         }
 
