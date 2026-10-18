@@ -98,7 +98,12 @@ public final class DayCycle {
      */
     public void tick(@Nonnull World world) {
         if (this.perFiveSeconds != 0) {
-            world.setTime(world.getTime() + this.perFiveSeconds);
+            try {
+                world.setTime(world.getTime() + this.perFiveSeconds);
+            } catch (IllegalArgumentException ignored) {
+                // Paper 26.x worlds without a clock reject time changes.
+                // Their other planetary effects can continue without a day cycle.
+            }
         }
     }
 
