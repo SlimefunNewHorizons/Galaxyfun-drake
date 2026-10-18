@@ -15,8 +15,8 @@ import org.bukkit.util.Vector;
 import com.github.drakescraft_labs.galactifun.base.BaseItems;
 import com.github.drakescraft_labs.galactifun.util.Util;
 import dev.drake.infinitylib.common.Scheduler;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
-import com.github.drakescraft_labs.slimefun4.legacy.api.BlockStorage;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
 
 @AllArgsConstructor
 public class FallenSatellitePopulator extends BlockPopulator {

@@ -65,15 +65,15 @@ import com.github.drakescraft_labs.galactifun.base.universe.earth.Earth;
 import com.github.drakescraft_labs.galactifun.util.ChunkStorage;
 import dev.drake.infinitylib.common.Events;
 import dev.drake.infinitylib.common.Scheduler;
-import com.github.drakescraft_labs.slimefun4.api.events.ExplosiveToolBreakBlocksEvent;
-import com.github.drakescraft_labs.slimefun4.api.events.GEOResourceGenerationEvent;
-import com.github.drakescraft_labs.slimefun4.api.events.WaypointCreateEvent;
-import com.github.drakescraft_labs.slimefun4.api.geo.GEOResource;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
-import com.github.drakescraft_labs.slimefun4.core.handlers.BlockBreakHandler;
-import com.github.drakescraft_labs.slimefun4.libraries.dough.items.ItemUtils;
-import com.github.drakescraft_labs.slimefun4.utils.ChatUtils;
-import com.github.drakescraft_labs.slimefun4.utils.tags.SlimefunTag;
+import io.github.thebusybiscuit.slimefun4.api.events.ExplosiveToolBreakBlocksEvent;
+import io.github.thebusybiscuit.slimefun4.api.events.GEOResourceGenerationEvent;
+import io.github.thebusybiscuit.slimefun4.api.events.WaypointCreateEvent;
+import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
+import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
+import io.github.thebusybiscuit.slimefun4.utils.tags.SlimefunTag;
 
 public final class WorldManager implements Listener {
 

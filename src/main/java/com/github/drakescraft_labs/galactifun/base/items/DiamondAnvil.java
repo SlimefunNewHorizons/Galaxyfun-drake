@@ -11,9 +11,9 @@ import org.bukkit.inventory.ItemStack;
 import com.github.drakescraft_labs.galactifun.base.BaseItems;
 import com.github.drakescraft_labs.galactifun.core.CoreItemGroup;
 import dev.drake.infinitylib.machines.MachineRecipeType;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
-import com.github.drakescraft_labs.slimefun4.api.recipes.RecipeType;
-import com.github.drakescraft_labs.slimefun4.legacy.Objects.SlimefunItem.abstractItems.AContainer;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 
 public final class DiamondAnvil extends AContainer {
 

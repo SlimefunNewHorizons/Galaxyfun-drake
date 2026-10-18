@@ -6,8 +6,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.github.drakescraft_labs.galactifun.api.items.ProtectingBlock;
 import com.github.drakescraft_labs.galactifun.api.universe.attributes.atmosphere.AtmosphericEffect;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
-import com.github.drakescraft_labs.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 public final class CoolingUnit extends ProtectingBlock {
 

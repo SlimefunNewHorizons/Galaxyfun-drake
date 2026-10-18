@@ -5,7 +5,7 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 
 import com.github.drakescraft_labs.galactifun.api.worlds.PlanetaryWorld;
-import com.github.drakescraft_labs.slimefun4.api.geo.GEOResource;
+import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
 
 /**
  * A resource that is exclusive to certain {@link PlanetaryWorld}s

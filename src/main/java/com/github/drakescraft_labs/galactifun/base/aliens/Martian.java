@@ -21,9 +21,9 @@ import org.bukkit.potion.PotionEffectType;
 import com.github.drakescraft_labs.galactifun.api.aliens.Alien;
 import com.github.drakescraft_labs.galactifun.base.BaseMats;
 import dev.drake.infinitylib.common.Scheduler;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItem;
-import com.github.drakescraft_labs.slimefun4.implementation.SlimefunItems;
-import com.github.drakescraft_labs.slimefun4.libraries.dough.items.ItemUtils;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 
 /**
  * Class for the martian

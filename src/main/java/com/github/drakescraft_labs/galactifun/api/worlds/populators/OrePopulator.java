@@ -12,7 +12,7 @@ import org.bukkit.generator.LimitedRegion;
 import org.bukkit.generator.WorldInfo;
 
 import com.github.drakescraft_labs.galactifun.api.worlds.AlienWorld;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 
 /**
  * Populator utility for simple ore population. To populate Slimefun ores use this +

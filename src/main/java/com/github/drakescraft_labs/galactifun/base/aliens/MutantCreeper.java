@@ -14,7 +14,7 @@ import org.bukkit.event.entity.EntityTargetEvent;
 
 import com.github.drakescraft_labs.galactifun.api.aliens.Alien;
 import com.github.drakescraft_labs.galactifun.base.BaseMats;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 
 /**
  * A class for a charged alien creeper, passive until attacked

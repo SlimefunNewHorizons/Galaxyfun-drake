@@ -38,9 +38,9 @@ import com.github.drakescraft_labs.galactifun.api.universe.attributes.atmosphere
 import com.github.drakescraft_labs.galactifun.api.universe.types.PlanetaryType;
 import com.github.drakescraft_labs.galactifun.api.worlds.populators.relics.FallenSatellitePopulator;
 import com.github.drakescraft_labs.galactifun.base.universe.earth.EarthOrbit;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItem;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
-import com.github.drakescraft_labs.slimefun4.legacy.api.BlockStorage;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
 
 /**
  * Any alien world

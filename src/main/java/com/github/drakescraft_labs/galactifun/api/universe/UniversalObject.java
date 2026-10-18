@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.github.drakescraft_labs.galactifun.api.universe.attributes.Orbit;
 import com.github.drakescraft_labs.galactifun.api.universe.types.UniversalType;
-import com.github.drakescraft_labs.slimefun4.libraries.dough.items.CustomItemStack;
-import com.github.drakescraft_labs.slimefun4.utils.ChatUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 
 /**
  * Any object in the universe

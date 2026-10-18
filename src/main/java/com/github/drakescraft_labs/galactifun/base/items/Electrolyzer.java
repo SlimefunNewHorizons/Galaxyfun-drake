@@ -9,10 +9,10 @@ import com.github.drakescraft_labs.galactifun.api.universe.attributes.atmosphere
 import com.github.drakescraft_labs.galactifun.base.BaseMats;
 import com.github.drakescraft_labs.galactifun.core.CoreItemGroup;
 import dev.drake.infinitylib.machines.MenuBlock;
-import com.github.drakescraft_labs.slimefun4.api.items.SlimefunItemStack;
-import com.github.drakescraft_labs.slimefun4.api.recipes.RecipeType;
-import com.github.drakescraft_labs.slimefun4.implementation.SlimefunItems;
-import com.github.drakescraft_labs.slimefun4.legacy.Objects.SlimefunItem.abstractItems.AContainer;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 
 public class Electrolyzer extends AContainer {
 
