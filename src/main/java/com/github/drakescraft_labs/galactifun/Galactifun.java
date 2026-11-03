@@ -138,8 +138,8 @@ public final class Galactifun extends AbstractAddon {
                 "################# Galaxyfun " + getPluginVersion() + " #################",
                 "",
                 "Galactifun DrakesCraft Edition is maintained by DrakesCraft Labs.",
-                "Repository: https://github.com/DrakesCraft-Labs/Galaxyfun-drake",
-                "Issues: https://github.com/DrakesCraft-Labs/Galaxyfun-drake/issues",
+                "Repository: https://github.com/SlimefunNewHorizons/Galaxyfun-drake",
+                "Issues: https://github.com/SlimefunNewHorizons/Galaxyfun-drake/issues",
                 "",
                 "###################################################"
         ));
