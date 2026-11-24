@@ -19,11 +19,13 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: SlimefunNewHorizons/drakes-slimefun-labs
+        ref: main
         path: drakes-slimefun-labs
     - name: Checkout Slimefun core
       uses: actions/checkout@v4
       with:
         repository: SlimefunNewHorizons/Slimefun4-Drake
+        ref: main
         path: slimefun-core
     - name: Set up JDK 21
       uses: actions/setup-java@v4
@@ -33,7 +35,7 @@ jobs:
     - name: Install Drake dependencies
       working-directory: drakes-slimefun-labs
       run: |
-        mvn -B -ntp -N -DskipTests install
+        mvn -B -ntp -N -DskipTests -f ../slimefun-core/build-parent/pom.xml install
         mvn -B -ntp -DskipTests -f sources/internal-metadata/patches/commons-lang-drake-patched/pom.xml install
         mvn -B -ntp -DskipTests -f sources/dough-core/pom.xml install
         mvn -B -ntp -DskipTests -Dslimefun.drake.version=11.0-Drake-1.21.11-SNAPSHOT -f ../slimefun-core/pom.xml install
@@ -42,4 +44,4 @@ jobs:
     - name: Build and preflight
       run: |
         ./gradlew --no-daemon clean build
-        ./scripts/verify-legacy-compatibility.sh
+        ./scripts/verify-legacy-compatibility.sh build/libs/Galaxyfun-11.0-Drake-1.21.11-SNAPSHOT.jar
