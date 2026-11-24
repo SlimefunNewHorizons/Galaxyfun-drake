@@ -43,5 +43,5 @@ jobs:
         mvn -B -ntp -Dmaven.test.skip=true -f sources/batch-2-expansion/InfinityLib/pom.xml install
     - name: Build and preflight
       run: |
-        ./gradlew --no-daemon clean build
+        ./gradlew --no-daemon clean build shadowJar
         ./scripts/verify-legacy-compatibility.sh build/libs/Galaxyfun-11.0-Drake-1.21.11-SNAPSHOT.jar
