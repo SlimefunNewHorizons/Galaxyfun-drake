@@ -6,7 +6,16 @@ This repository is part of the [SlimefunNewHorizons](https://github.com/Slimefun
 
 | Author | Commits here | Source |
 |---|---|---|
-| _none verified yet_ | | |
+| [Slimefun-Addon-Community](https://github.com/Slimefun-Addon-Community) | n/a | Upstream project [Slimefun-Addon-Community/Galactifun](https://github.com/Slimefun-Addon-Community/Galactifun) |
+| [Seggan](https://github.com/Seggan) | n/a | GitHub contributors / project history |
+| [Riley31415](https://github.com/Riley31415) | n/a | GitHub contributors / project history |
+| [IvanMishin1](https://github.com/IvanMishin1) | n/a | GitHub contributors / project history |
+| [GallowsDove](https://github.com/GallowsDove) | n/a | GitHub contributors / project history |
+| [zimzaza4](https://github.com/zimzaza4) | n/a | GitHub contributors / project history |
+| [JustAHuman-xD](https://github.com/JustAHuman-xD) | n/a | GitHub contributors / project history |
+| [PranavVerma-droid](https://github.com/PranavVerma-droid) | n/a | GitHub contributors / project history |
+| [ProfElements](https://github.com/ProfElements) | n/a | GitHub contributors / project history |
+| Mooy1 | n/a | `authors` in plugin.yml |
 
 Authors are taken from the repository history (GitHub contributors) and from the code itself (`plugin.yml`). If an original author is missing or wrongly credited, open an issue or mention [@JackStar6677-1](https://github.com/JackStar6677-1) and it will be fixed.
 
